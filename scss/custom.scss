@@ -1,0 +1,54 @@
+.reveal {
+  .giant {
+    font-size: 600px;
+    line-height: 0.8;
+    transition: color 3000ms linear;
+  }
+
+  ul {
+    li {
+      font-size: 36px;
+    }
+  }
+
+  button,
+  .button {
+    border: none;
+    background: #fff;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 10px;
+    &.on:after {
+      content: ': ON';
+    }
+  }
+}
+
+
+
+
+/**
+ * D3 Styles
+ */
+.reveal {
+  .h-bar {
+    min-height: 15px;
+    min-width: 10px;
+    background-color: steelblue;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #f0f8ff;
+    text-align: right;
+    padding-right: 2px;
+    span {
+      font-size: 20px;
+    }
+  }
+  .selected {
+    background-color: #f08080;
+  }
+  .hide {
+    display: none;
+  }
+}

@@ -1,0 +1,41 @@
+.reveal .giant {
+  font-size: 600px;
+  line-height: 0.8;
+  -webkit-transition: color 3000ms linear;
+          transition: color 3000ms linear; }
+
+.reveal ul li {
+  font-size: 36px; }
+
+.reveal button,
+.reveal .button {
+  border: none;
+  background: #fff;
+  padding: 10px 15px;
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 10px; }
+  .reveal button.on:after,
+  .reveal .button.on:after {
+    content: ': ON'; }
+
+/**
+ * D3 Styles
+ */
+.reveal .h-bar {
+  min-height: 15px;
+  min-width: 10px;
+  background-color: steelblue;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #f0f8ff;
+  text-align: right;
+  padding-right: 2px; }
+  .reveal .h-bar span {
+    font-size: 20px; }
+
+.reveal .selected {
+  background-color: #f08080; }
+
+.reveal .hide {
+  display: none; }
