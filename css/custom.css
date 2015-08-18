@@ -94,3 +94,6 @@
   position: relative; }
   .reveal #example8 .chart .v-bar {
     min-width: 40px; }
+
+.reveal #example9 .chart svg {
+  background: #fff; }
