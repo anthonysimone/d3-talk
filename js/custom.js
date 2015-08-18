@@ -714,7 +714,7 @@ $(document).ready(function() {
       }
 
       function renderBubbles() {
-        _r.range([0, 50]);
+        _r.range([1, 50]);
 
         _data.forEach(function (list, i) {
           _bodyG.selectAll("circle._" + i)
@@ -733,6 +733,9 @@ $(document).ready(function() {
             })
             .transition()
               .duration(2000)
+              .delay(function(d,i) {
+                return i * 200;
+              })
             .attr("cx", function (d) {
               return _x(d.x); // <-D
             })
