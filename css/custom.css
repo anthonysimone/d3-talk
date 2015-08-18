@@ -39,3 +39,58 @@
 
 .reveal .hide {
   display: none; }
+
+.reveal .v-bar {
+  min-height: 1px;
+  min-width: 30px;
+  background-color: #4682b4;
+  margin-right: 2px;
+  font-size: 10px;
+  color: #f0f8ff;
+  text-align: center;
+  width: 10px;
+  display: inline-block; }
+
+.reveal .axis path, .reveal .axis line {
+  fill: none;
+  stroke-width: 2px;
+  stroke: #000;
+  shape-rendering: crispEdges; }
+
+.reveal .axis text {
+  font: 10px sans-serif; }
+
+.reveal .axis .grid-line {
+  stroke: black;
+  shape-rendering: crispEdges;
+  stroke-opacity: .2; }
+
+.reveal .line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2; }
+
+.reveal #example6 .chart,
+.reveal #example5 .chart {
+  min-height: 500px;
+  min-width: 500px; }
+  .reveal #example6 .chart svg,
+  .reveal #example5 .chart svg {
+    background: #fff; }
+
+.reveal #example7 .chart {
+  min-height: 500px;
+  min-width: 960px; }
+  .reveal #example7 .chart path {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: .5px; }
+  .reveal #example7 .chart path:hover {
+    fill: red; }
+
+.reveal #example8 .chart {
+  min-height: 100px;
+  min-width: 680px;
+  position: relative; }
+  .reveal #example8 .chart .v-bar {
+    min-width: 40px; }

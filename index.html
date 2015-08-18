@@ -261,7 +261,7 @@ var data = [
           </code></pre>
           </section>
           <section>
-            <h3>Updating with Objects &amp; Scale</h3>
+            <h3>Updating with Objects &amp; Filters</h3>
             <pre><code class="javascript" data-trim>
 function render(data, category) {
 // Enter (add h-bar and a span)
@@ -375,10 +375,10 @@ function sort(comparator) {
             <h2>Scale</h2>
             <ul>
               <li>Translates data to an understandable visual representation</li>
-              <li>Can simply translate a number range to a color range</li>
-              <li>Are used when setting up axes</li>
               <li>Domain - input</li>
               <li>Range - translated output</li>
+              <li>Can translate a number range to a color range</li>
+              <li>Are used when setting up axes</li>
               <li>linear, power, log, time, ordinal</li>
               <li>Interpolation</li>
             </ul>
@@ -424,7 +424,122 @@ d3.select("#example4 .chart").selectAll("div.h-bar")
           <section>
             <h2>Axes!</h2>
             <ul>
-              <li></li>
+              <li>.axis method helps to construct axes</li>
+              <li>Customize with .scale, .ticks, .orient</li>
+            </ul>
+            <pre><code class="javascript" data-trim>
+function renderAxis(scale, i, orient) {
+  var axis = d3.svg.axis()
+    .scale(scale)
+    .orient(orient)
+    .ticks(5);
+
+  svg.append("g")
+    .attr("transform", function () {
+      if (["top", "bottom"].indexOf(orient) >= 0) {
+        return "translate(" + margin + "," + i * offset + ")";
+      } else {
+        return "translate(" + i * offset + ", " + margin + ")";
+      }
+    })
+    .call(axis);
+}
+            </code></pre>
+          </section>
+          <section>
+            <h3>Some Axes</h3>
+            <div id="example5">
+              <div class="control-group">
+                <button data-orient="bottom">Horizontal bottom</button>
+                <button data-orient="top">horizontal top</button>
+                <button data-orient="left">Vertical left</button>
+                <button data-orient="right">Vertical right</button>
+              </div>
+              <div class="chart"></div>
+            </div>
+          </section>
+          <section>
+            <h3>Get some grid lines</h3>
+            <ul>
+              <li>Render flexible gridlines by drawing lines at each tick</li>
+              <li>D3 decides where ticks go with input from you</li>
+            </ul>
+            <pre><code class="javascript" data-trim>
+function renderXGridlines() {
+  var lines = d3.selectAll("g.x-axis g.tick")
+    .select("line.grid-line")
+    .remove();
+
+  lines = d3.selectAll("g.x-axis g.tick")
+    .append("line")
+    .classed("grid-line", true)
+
+  lines.attr("x1", 0)
+    .attr("y1", 0)
+    .attr("x2", 0)
+    .attr("y2", -yAxisLength);
+}
+            </code></pre>
+          </section>
+          <section>
+            <h3>And add Transition!</h3>
+            <ul>
+              <li>Use the same chart setup for any data</li>
+              <li>.max is used to set the domain, and can be adjusted on the fly to dynamically adjust the chart when data changes</li>
+              <li>D3 provides many ways to simply add transitions</li>
+            </ul>
+            <pre><code class="javascript" data-trim>
+// initial yAxis declaration, scale previously established
+yAxis = d3.svg.axis()
+  .scale(scale)
+  .tickSubdivide(1)
+  .orient("left");
+
+// On rescale, change domain to the new max value of dataset
+yAxis.scale().domain([max, 0]);
+svg.select("g.y-axis")
+  .transition()      // <-- This makes everything smooth
+    .duration(1000)  // But it was so easy!?
+  .call(yAxis);
+            </code></pre>
+          </section>
+          <section>
+            <h3>Axes and Grid lines</h3>
+            <div id="example6">
+              <div class="control-group">
+                <button>Randomly Rescale</button>
+                <div class="chart"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Some other examples</h2>
+            <ul>
+              <li>Just the basic</li>
+              <li>Maps, motion, connections</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Object-Identity</h3>
+            <ul>
+              <li>Keep object consistency throughout visualization</li>
+            </ul>
+            <div id="example8">
+              <div class="chart"></div>
+            </div>
+          </section>
+          <section>
+            <h3>Topography</h3>
+            <div id="example7">
+              <div class="chart"></div>
+            </div>
+          </section>
+          <section>
+            <h3>Lots more</h3>
+            <ul>
+              <li>Check out tons of uses at <a href="http://d3js.org">d3js.org</a> and <a href="https://github.com/mbostock/d3/wiki/Gallery">github</a></li>
             </ul>
           </section>
         </section>
@@ -461,6 +576,7 @@ d3.select("#example4 .chart").selectAll("div.h-bar")
 		</script>
 		<script src="js/jquery-1.11.3.js"></script>
     <script src="js/d3.js"></script>
+    <script type="text/javascript" src="js/topojson.js"></script>
 		<script src="js/custom.js"></script>
 
 	</body>
